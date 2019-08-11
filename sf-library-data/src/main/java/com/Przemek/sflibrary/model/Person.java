@@ -13,8 +13,15 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
-public class Person {
+public class Person extends BaseEntity {
     private String firstName;
     private String lastName;
     private LocalDate BirthDay;
+
+    public Person(Long id, String firstName, String lastName, LocalDate birthDay) {
+        super(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        BirthDay = birthDay;
+    }
 }

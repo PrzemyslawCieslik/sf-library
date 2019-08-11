@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Author extends Person {
 
+    private String description;
     private LocalDate deathDate;
 
     public boolean isAlive(){
@@ -22,5 +23,11 @@ public class Author extends Person {
             return deathDate.isAfter(getBirthDay());
         }else
             return Boolean.valueOf("Living to today");
+    }
+
+    public Author(Long id,String firstName, String lastName, LocalDate BirthDay, String description, LocalDate deathDate) {
+        super(id,firstName, lastName, BirthDay);
+        this.description = description;
+        this.deathDate = deathDate;
     }
 }

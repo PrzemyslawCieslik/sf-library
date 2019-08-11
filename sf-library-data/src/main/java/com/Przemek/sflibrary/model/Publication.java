@@ -1,11 +1,9 @@
 package com.Przemek.sflibrary.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.MappedSuperclass;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -17,5 +15,14 @@ public class Publication extends BaseEntity {
     private int year;
     private String title;
     private String publisher;
+    private LocalDate releaseDate;
 
+    @Builder
+    public Publication(Long id, int year, String title, String publisher, LocalDate releaseDate) {
+        super(id);
+        this.year = year;
+        this.title = title;
+        this.publisher = publisher;
+        this.releaseDate = releaseDate;
+    }
 }
