@@ -20,26 +20,24 @@ public class UserMapService extends MapService<User, Long> implements UserServic
 
     @Override
     public User findByLastName(String lastName) {
-        //TODO Create logic and throw an exception
-        return null;
+        return this.findAll()
+                .stream()
+                .filter(user -> user.getLastName().equalsIgnoreCase(lastName))
+                .findFirst()
+                .orElse(null);
+
     }
 
-    @Override
-    public List<User> findAllByLastName(String lastName) {
-        //TODO Create logic and throw an exception
-        return null;
-    }
 
     @Override
     public User findByDocumentNumber(String documentNumber) {
         return this.findByDocumentNumber(documentNumber);
-        //TODO Create logic and throw an exception
+
     }
 
     @Override
     public List<User> findByBirthDate(LocalDate birthDate) {
         return this.findByBirthDate(birthDate);
-        //TODO Create logic and throw an exception
     }
 
     @Override
