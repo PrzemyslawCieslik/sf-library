@@ -5,6 +5,7 @@ import com.Przemek.sflibrary.model.Author;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Set;
 
 public interface AuthorRepository extends CrudRepository<Author, Long> {
 
@@ -12,4 +13,5 @@ public interface AuthorRepository extends CrudRepository<Author, Long> {
 
     List<Author> findAllByLastName(String lastName);
 
+    Set<Author> findAll(Long aLong);
 }
