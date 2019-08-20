@@ -3,13 +3,12 @@ package com.Przemek.sflibrary.services.springdatajpa;
 import com.Przemek.sflibrary.model.User;
 import com.Przemek.sflibrary.repositories.UserRepository;
 import com.Przemek.sflibrary.services.UserService;
+import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
+@Service
 public class UserSDJpaService implements UserService {
 
     private final UserRepository userRepository;
@@ -26,13 +25,6 @@ public class UserSDJpaService implements UserService {
     @Override
     public User findByDocumentNumber(String documentNumber) {
         return userRepository.findByDocumentNumber(documentNumber);
-    }
-
-    @Override
-    public List<User> findByBirthDate(LocalDate birthDate) {
-        List<User> users = new ArrayList<>();
-        userRepository.findByBirthDate(birthDate).forEach(users::add);
-        return users;
     }
 
     @Override

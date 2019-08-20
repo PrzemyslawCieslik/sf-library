@@ -2,20 +2,30 @@ package com.Przemek.sflibrary.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "magazines")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 public class Magazine extends Publication {
-    private String language;
 
     @Builder
-    public Magazine(Long id, int year, String title, String publisher, LocalDate releaseDate, String language) {
-        super(id, year, title, publisher, releaseDate);
+    public Magazine(Long id, String title, String publisher, LocalDate releaseDate, String language) {
+        super(id,title, publisher, releaseDate);
         this.language = language;
     }
+
+    @Column(name = "language")
+    @NotBlank
+    private String language;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
+
 }

@@ -3,11 +3,13 @@ package com.Przemek.sflibrary.services.springdatajpa;
 import com.Przemek.sflibrary.model.Magazine;
 import com.Przemek.sflibrary.repositories.MagazineRepository;
 import com.Przemek.sflibrary.services.MagazineService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Service
 public class MagazineSDJpaService implements MagazineService {
 
     private final MagazineRepository magazineRepository;
