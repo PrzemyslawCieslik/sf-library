@@ -4,6 +4,7 @@ import com.Przemek.sflibrary.model.User;
 import com.Przemek.sflibrary.services.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -31,6 +32,12 @@ public class UserMapService extends MapService<User, Long> implements UserServic
     public User findByDocumentNumber(String documentNumber) {
         return this.findByDocumentNumber(documentNumber);
 
+    }
+
+    @Override
+    public List<User> findAllByLastName(String lastName) {
+        //TODO -impl
+        return null;
     }
 
     @Override

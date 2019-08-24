@@ -6,6 +6,7 @@ import com.Przemek.sflibrary.services.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -25,6 +26,11 @@ public class UserSDJpaService implements UserService {
     @Override
     public User findByDocumentNumber(String documentNumber) {
         return userRepository.findByDocumentNumber(documentNumber);
+    }
+
+    @Override
+    public List<User> findAllByLastName(String lastName) {
+        return userRepository.findAllByLastName(lastName);
     }
 
     @Override
