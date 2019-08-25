@@ -3,12 +3,14 @@ package com.Przemek.sflibrary.services.springdatajpa;
 import com.Przemek.sflibrary.model.User;
 import com.Przemek.sflibrary.repositories.UserRepository;
 import com.Przemek.sflibrary.services.UserService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Profile("springdatajpa")
 @Service
 public class UserSDJpaService implements UserService {
 

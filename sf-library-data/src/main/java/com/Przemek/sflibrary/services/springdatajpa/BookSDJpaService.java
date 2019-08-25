@@ -3,11 +3,13 @@ package com.Przemek.sflibrary.services.springdatajpa;
 import com.Przemek.sflibrary.model.Book;
 import com.Przemek.sflibrary.repositories.BookRepository;
 import com.Przemek.sflibrary.services.BookService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Profile("springdatajpa")
 @Service
 public class BookSDJpaService implements BookService {
 

@@ -2,11 +2,13 @@ package com.Przemek.sflibrary.services.map;
 
 import com.Przemek.sflibrary.model.Author;
 import com.Przemek.sflibrary.services.AuthorService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
 
+@Profile("default")
 @Service
 public class AuthorMapService extends MapService<Author, Long> implements AuthorService {
 

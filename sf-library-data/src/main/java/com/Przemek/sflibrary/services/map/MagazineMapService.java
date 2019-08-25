@@ -2,11 +2,13 @@ package com.Przemek.sflibrary.services.map;
 
 import com.Przemek.sflibrary.model.Magazine;
 import com.Przemek.sflibrary.services.MagazineService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
 
+@Profile("default")
 @Service
 public class MagazineMapService extends MapService<Magazine, Long> implements MagazineService {
 

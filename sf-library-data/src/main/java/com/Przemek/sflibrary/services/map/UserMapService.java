@@ -2,6 +2,7 @@ package com.Przemek.sflibrary.services.map;
 
 import com.Przemek.sflibrary.model.User;
 import com.Przemek.sflibrary.services.UserService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class UserMapService extends MapService<User, Long> implements UserServic
         this.userService = userService;
     }
 
-
+    @Profile("default")
     @Override
     public User findByLastName(String lastName) {
         return this.findAll()

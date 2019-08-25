@@ -35,4 +35,6 @@ public class Book extends Publication {
     @JoinColumn(name = "author_id")
     private Author author;
 
+    @ManyToMany
+    private User user;
 }

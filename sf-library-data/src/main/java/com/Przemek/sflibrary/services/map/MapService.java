@@ -4,6 +4,7 @@ import com.Przemek.sflibrary.model.BaseEntity;
 
 import java.util.*;
 
+
 public abstract class MapService <T extends BaseEntity, ID extends Long> {
 
     protected Map<Long, T> map = new HashMap<>();

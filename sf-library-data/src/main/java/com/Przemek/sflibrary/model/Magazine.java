@@ -28,4 +28,6 @@ public class Magazine extends Publication {
     @JoinColumn(name = "author_id")
     private Author author;
 
+    @ManyToMany
+    private User user;
 }
