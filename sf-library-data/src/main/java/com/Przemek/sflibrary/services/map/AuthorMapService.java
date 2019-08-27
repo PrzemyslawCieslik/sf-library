@@ -12,12 +12,6 @@ import java.util.Set;
 @Service
 public class AuthorMapService extends MapService<Author, Long> implements AuthorService {
 
-    private final AuthorService authorService;
-
-    public AuthorMapService(AuthorService authorService) {
-        this.authorService = authorService;
-    }
-
     @Override
     public Author findByLastName(String lastName) {
         return this.findAll()
@@ -29,7 +23,6 @@ public class AuthorMapService extends MapService<Author, Long> implements Author
 
     @Override
     public List<Author> findAllByLastName(String lastName) {
-        //TODO -impl
         return null;
     }
 

@@ -1,6 +1,8 @@
 package com.Przemek.sflibrary.controllers;
 
 import com.Przemek.sflibrary.model.User;
+import com.Przemek.sflibrary.services.BookService;
+import com.Przemek.sflibrary.services.MagazineService;
 import com.Przemek.sflibrary.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,12 +18,16 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final BookService bookService;
+    private final MagazineService magazineService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, BookService bookService, MagazineService magazineService) {
         this.userService = userService;
+        this.bookService = bookService;
+        this.magazineService = magazineService;
     }
 
-    @InitBinder
+    @InitBinder("/user")
     public void setAllowedFields(WebDataBinder dataBinder){
         dataBinder.setDisallowedFields("id");
     }
@@ -33,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping("/new_user")
-    public String createAuthor(@Valid User user, BindingResult result){
+    public String createUser(@Valid User user, BindingResult result){
         if (result.hasErrors()){
             return "users/addUserOrUpdate";
         }
@@ -44,19 +50,19 @@ public class UserController {
     }
 
     @GetMapping("/{userId}/edit")
-    public String updateAuthor(@PathVariable Long userId, Model model) {
+    public String updateUser(@PathVariable Long userId, Model model) {
         model.addAttribute(userService.findById(userId));
         return "users/addUserOrUpdate";
     }
 
     @PostMapping("/{userId}/edit")
-    public String updateAuthorForm(@Valid User user, BindingResult result, @PathVariable Long userId) {
+    public String updateUserForm(@Valid User user, BindingResult result, @PathVariable Long userId) {
         if (result.hasErrors()) {
             return "users/addUserOrUpdate";
         } else {
             user.setId(userId);
             User savedUser = userService.save(user);
-            return "redirect:/authors/" + savedUser.getId();
+            return "redirect:/users/" + savedUser.getId();
         }
     }
 
@@ -67,8 +73,8 @@ public class UserController {
         return "users/findUsers";
     }
 
-    @GetMapping
-    public String findBy(User user, BindingResult result, Model model){
+    @GetMapping(value = "/find_UserBy")
+    public String findByLikeLastName(User user, BindingResult result, Model model){
         if (user.getLastName() == null){
             user.setLastName("");
         }

@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.util.List;
 
-@Controller
+@Controller("/author")
 public class AuthorController {
 
     private final AuthorService authorService;

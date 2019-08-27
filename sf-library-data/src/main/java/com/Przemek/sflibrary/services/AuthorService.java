@@ -4,6 +4,7 @@ import com.Przemek.sflibrary.model.Author;
 
 import java.util.List;
 
+
 public interface AuthorService extends CrudService<Author, Long> {
 
     Author findByLastName(String lastName);

@@ -12,12 +12,6 @@ import java.util.Set;
 @Service
 public class MagazineMapService extends MapService<Magazine, Long> implements MagazineService {
 
-    private final MagazineService magazineService;
-
-    public MagazineMapService(MagazineService magazineService) {
-        this.magazineService = magazineService;
-    }
-
     @Override
     public List<Magazine> findAllByLanguage(String language) {
         return this.findAllByLanguage(language);

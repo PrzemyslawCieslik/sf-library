@@ -11,12 +11,6 @@ import java.util.Set;
 @Service
 public class BookMapService extends MapService<Book, Long> implements BookService {
 
-    private final BookService bookService;
-
-    public BookMapService(BookService bookService) {
-        this.bookService = bookService;
-    }
-
     @Override
     public Book findByIsbn(String isbn) {
         return this.findByIsbn(isbn);

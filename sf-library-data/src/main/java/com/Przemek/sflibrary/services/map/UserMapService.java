@@ -11,11 +11,6 @@ import java.util.Set;
 @Service
 public class UserMapService extends MapService<User, Long> implements UserService {
 
-    private final UserService userService;
-
-    public UserMapService(UserService userService) {
-        this.userService = userService;
-    }
 
     @Profile("default")
     @Override

@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "books")
@@ -36,5 +37,5 @@ public class Book extends Publication {
     private Author author;
 
     @ManyToMany
-    private User user;
+    private Set<User> user;
 }
