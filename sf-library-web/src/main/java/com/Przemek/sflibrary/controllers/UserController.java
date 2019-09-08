@@ -1,8 +1,6 @@
 package com.Przemek.sflibrary.controllers;
 
 import com.Przemek.sflibrary.model.User;
-import com.Przemek.sflibrary.services.BookService;
-import com.Przemek.sflibrary.services.MagazineService;
 import com.Przemek.sflibrary.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +16,10 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-    private final BookService bookService;
-    private final MagazineService magazineService;
 
-    public UserController(UserService userService, BookService bookService, MagazineService magazineService) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.bookService = bookService;
-        this.magazineService = magazineService;
-    }
+     }
 
     @InitBinder("/user")
     public void setAllowedFields(WebDataBinder dataBinder){
