@@ -16,8 +16,7 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class AuthorSDJpaServiceTest {
@@ -29,11 +28,14 @@ class AuthorSDJpaServiceTest {
     AuthorSDJpaService service;
 
     Author returnedAuthor;
+
     private final String LAST_NAME = "Smith";
+    private final Long authorId = 1L;
+
 
     @BeforeEach
     void setUp() {
-        returnedAuthor=Author.builder().id(1L).lastName(LAST_NAME).build();
+        returnedAuthor=Author.builder().id(authorId).lastName(LAST_NAME).build();
     }
 
     @Test
@@ -53,7 +55,7 @@ class AuthorSDJpaServiceTest {
     @Test
     void findAll() {
         Set<Author> returnAuthorSet = new HashSet<>();
-        returnAuthorSet.add(Author.builder().id(1L).build());
+        returnAuthorSet.add(Author.builder().id(authorId).build());
         returnAuthorSet.add(Author.builder().id(2L).build());
 
         when(authorRepository.findAll()).thenReturn(returnAuthorSet);
@@ -68,7 +70,7 @@ class AuthorSDJpaServiceTest {
     void findById() {
         when(authorRepository.findById(any())).thenReturn(Optional.of(returnedAuthor));
 
-        Author author = service.findById(1L);
+        Author author = service.findById(authorId);
 
         assertEquals(1L, author.getId());
         assertNotNull(author);
@@ -89,9 +91,15 @@ class AuthorSDJpaServiceTest {
 
     @Test
     void delete() {
+        service.delete(returnedAuthor);
+
+        verify(authorRepository, times(1)).delete(any());
     }
 
     @Test
     void deleteById() {
+        service.deleteById(1L);
+
+        verify(authorRepository).deleteById(anyLong());
     }
 }
